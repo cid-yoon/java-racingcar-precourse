@@ -12,29 +12,27 @@ public class Cylinder {
     public static final int MIN_TORQUE = 0;
     public static final int MAX_TORQUE = 9;
 
-    private final int value;
+    private final int criticalPoint;    //  실린더 임계치
 
-    public Cylinder(int torque) {
-        torqueValidation(torque);
-        this.value = torque;
+    public Cylinder(int criticalPoint) {
+        torqueValidation(criticalPoint);
+        this.criticalPoint = criticalPoint;
     }
 
     /**
      * 임계점 판단하여 이동 여부를 판별
      * 엔진에서 결정해줌
      *
-     * @param criticalPoint 임계점 수치
+     * @param torque 회전수
      * @return 엔진의 동작 결과
      */
-    public EngineState run(int criticalPoint) {
-
-        torqueValidation(criticalPoint);
-
-        if (value < criticalPoint) {
-            return EngineState.IDLE;
+    public EngineState run(int torque) {
+        torqueValidation(torque);
+        if (criticalPoint > torque) {
+            return EngineState.MOVE;
         }
 
-        return EngineState.MOVE;
+        return EngineState.IDLE;
     }
 
     private void torqueValidation(int torque) {

@@ -37,7 +37,7 @@ class CylinderTest {
     void 실린더_동작_임계점이하_입력시_제자리_명령_생성(int torque) {
 
         Cylinder cylinder = new Cylinder(torque);
-        EngineState state = cylinder.run(Engine.CRITICAL_POINT);
+        EngineState state = cylinder.run(Engine.DEFAULT_CRITICAL_POINT);
         assertThat(state).isEqualTo(EngineState.IDLE);
     }
 
@@ -47,7 +47,7 @@ class CylinderTest {
     void 실린더_동작_임계점_이상_입력시_이동(int torque) {
 
         Cylinder cylinder = new Cylinder(torque);
-        EngineState state = cylinder.run(Engine.CRITICAL_POINT);
+        EngineState state = cylinder.run(Engine.DEFAULT_CRITICAL_POINT);
         assertThat(state).isEqualTo(EngineState.MOVE);
     }
 
