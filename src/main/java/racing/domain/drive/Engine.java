@@ -9,16 +9,16 @@ public class Engine {
 
     private static final Random random = new Random();
     public static final int DEFAULT_CRITICAL_POINT = 4;
-    private final Gas gas;
     private final Cylinder cylinder;
+    private Gas gas;
 
-    public Engine(Gas gas, int criticalPoint) {
-        this(gas, new Cylinder(criticalPoint));
-    }
-
-    public Engine(Gas gas, Cylinder cylinder) {
+    private Engine(Gas gas, Cylinder cylinder) {
         this.gas = gas;
         this.cylinder = cylinder;
+    }
+
+    public String getGasAmount() {
+        return this.gas.toString();
     }
 
     public EngineState run() {
@@ -37,4 +37,14 @@ public class Engine {
     private static int accelerator() {
         return random.nextInt(Cylinder.MAX_TORQUE);
     }
+
+    public static Engine create(int gasAmount) {
+        return new Engine(new Gas(gasAmount), new Cylinder(DEFAULT_CRITICAL_POINT));
+    }
+
+    public static Engine create(int gasAmount, Cylinder cylinder) {
+        return new Engine(new Gas(gasAmount), cylinder);
+    }
+
+
 }
