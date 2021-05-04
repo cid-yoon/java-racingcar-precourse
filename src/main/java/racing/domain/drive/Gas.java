@@ -7,7 +7,7 @@ package racing.domain.drive;
 public class Gas {
 
     public static final int MIN_GAUGE = 0;  // 최소 수치
-    public static final int MAX_GAUGE = 100; // 임의의 최대 수치
+    public static final int MAX_GAUGE = 10; // 임의의 최대 수치
     public static final int CONSUME_AMOUNT = 1; // 소비량
 
     // 수량
@@ -44,6 +44,17 @@ public class Gas {
     }
 
     /**
+     * 충전
+     *
+     * @param gas 충전량
+     * @return 총량
+     */
+    public Gas charge(Gas gas) {
+
+        return new Gas(this.amount + gas.amount);
+    }
+
+    /**
      * 잔여량이 존재하는지 판단
      */
     public boolean has() {
@@ -54,4 +65,6 @@ public class Gas {
     public String toString() {
         return String.valueOf(amount);
     }
+
+
 }
