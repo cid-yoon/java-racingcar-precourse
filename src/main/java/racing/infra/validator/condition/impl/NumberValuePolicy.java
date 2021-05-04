@@ -6,6 +6,6 @@ public class NumberValuePolicy implements ConditionPolicy {
     @Override
     public boolean isSatisfied(String inputString) {
 
-        return inputString.matches("^[1-9]+$");
+        return !inputString.matches("^[1-9]+$");
     }
 }

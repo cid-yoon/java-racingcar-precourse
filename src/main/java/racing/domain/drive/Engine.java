@@ -10,7 +10,7 @@ public class Engine {
     private static final Random random = new Random();
     public static final int DEFAULT_CRITICAL_POINT = 4;
     private final Cylinder cylinder;
-    private Gas gas;
+    private final Gas gas;
 
     private Engine(Gas gas, Cylinder cylinder) {
         this.gas = gas;

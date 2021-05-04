@@ -7,6 +7,7 @@ import racing.domain.display.DriveRecord;
 
 import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
 
+@SuppressWarnings("ALL")
 class CarTest {
 
     @DisplayName("번호판을 통해 자동차의 이름을 설정/확인할 수 있다")

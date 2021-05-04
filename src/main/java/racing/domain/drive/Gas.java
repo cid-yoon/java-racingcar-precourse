@@ -44,17 +44,6 @@ public class Gas {
     }
 
     /**
-     * 충전
-     *
-     * @param gas 충전량
-     * @return 총량
-     */
-    public Gas charge(Gas gas) {
-
-        return new Gas(this.amount + gas.amount);
-    }
-
-    /**
      * 잔여량이 존재하는지 판단
      */
     public boolean has() {

@@ -24,7 +24,7 @@ public class DisplayPanel {
         this.uiSystem = uiSystem;
     }
 
-    public int update(List<DriveRecord> records) {
+    public void update(List<DriveRecord> records) {
 
         if (records == null) {
             throw new NullPointerException();
@@ -33,7 +33,6 @@ public class DisplayPanel {
         this.highestDistance = calculateHighestDistance(records, this.highestDistance);
         this.leaderNames = calculateLeaderNames(records, highestDistance);
 
-        return highestDistance;
     }
 
     public void draw(List<DriveRecord> records) {

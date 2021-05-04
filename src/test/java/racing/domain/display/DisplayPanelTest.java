@@ -11,6 +11,7 @@ import java.util.List;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatNullPointerException;
 
+@SuppressWarnings("ALL")
 class DisplayPanelTest {
 
     private UiSystem uiSystem;
@@ -52,9 +53,7 @@ class DisplayPanelTest {
     void 전광판_사용자_주행_정보_주행기록이_빈값일때_예외() {
 
         DisplayPanel displayPanel = new DisplayPanel(uiSystem);
-        assertThatNullPointerException().isThrownBy(() -> {
-            displayPanel.update(null);
-        });
+        assertThatNullPointerException().isThrownBy(() -> displayPanel.update(null));
 
     }
 

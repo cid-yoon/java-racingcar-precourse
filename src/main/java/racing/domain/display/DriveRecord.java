@@ -3,8 +3,8 @@ package racing.domain.display;
 import racing.infra.UiSystem;
 
 public class DriveRecord {
-    private String name;
-    private Integer distance;
+    private final String name;
+    private final Integer distance;
 
     // 출력에 사용될 라인 모양
     private static final String LINE_SYMBOL = "-";
@@ -30,11 +30,11 @@ public class DriveRecord {
 
     private String createDriveLine() {
 
-        String driveLine = "";
+        StringBuilder driveLine = new StringBuilder();
         for (int i = 0; i < this.distance; i++) {
-            driveLine += LINE_SYMBOL;
+            driveLine.append(LINE_SYMBOL);
         }
-        return driveLine;
+        return driveLine.toString();
 
     }
 

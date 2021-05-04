@@ -10,6 +10,7 @@ import static org.assertj.core.api.Assertions.assertThatIllegalArgumentException
 import static org.assertj.core.api.Assertions.assertThatIllegalStateException;
 import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
 
+@SuppressWarnings("ALL")
 class GasTest {
 
     @Test
@@ -49,7 +50,7 @@ class GasTest {
 
         // Then
         assertThat(remainGas).isEqualTo(new Gas(chargeAmount - Gas.CONSUME_AMOUNT));
-        assertThat(remainGas).isEqualTo( new Gas(remainAmount));
+        assertThat(remainGas).isEqualTo(new Gas(remainAmount));
     }
 
     @DisplayName("연료가 없는데 소비 요청시 IllegalStatement 예외를 반환")
@@ -57,9 +58,7 @@ class GasTest {
     void 연료_소비_연료가_없는경우_예외반환() {
 
         Gas gas = new Gas(0);
-        assertThatIllegalStateException().isThrownBy(() -> {
-            gas.consume();
-        });
+        assertThatIllegalStateException().isThrownBy(gas::consume);
     }
 
 }

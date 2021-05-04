@@ -5,6 +5,7 @@ import org.junit.jupiter.api.Test;
 
 import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
 
+@SuppressWarnings("ALL")
 public class EngineTest {
 
     @DisplayName("엔진 개체를 생성")
@@ -52,7 +53,6 @@ public class EngineTest {
     @Test
     void 엔진_동작_임계치_이싱이면_이동() {
 
-        Gas gas = new Gas(9);
         Cylinder newCylinder = new Cylinder(Cylinder.MAX_TORQUE);
         Engine engine = Engine.create(9, newCylinder);
 

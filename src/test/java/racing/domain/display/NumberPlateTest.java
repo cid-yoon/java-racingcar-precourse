@@ -10,6 +10,7 @@ import static org.assertj.core.api.Assertions.assertThatIllegalArgumentException
 import static org.assertj.core.api.Assertions.assertThatNullPointerException;
 import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
 
+@SuppressWarnings("ALL")
 public class NumberPlateTest {
 
 
@@ -44,15 +45,15 @@ public class NumberPlateTest {
 
 
         assertThatNullPointerException().isThrownBy(() -> {
-            NumberPlate numberPlate = NumberPlate.create(null);
+            NumberPlate.create(null);
         });
 
         assertThatIllegalArgumentException().isThrownBy(() -> {
-            NumberPlate numberPlate = NumberPlate.create(emptyName);
+            NumberPlate.create(emptyName);
         });
 
         assertThatIllegalArgumentException().isThrownBy(() -> {
-            NumberPlate numberPlate = NumberPlate.create(overflowName);
+            NumberPlate.create(overflowName);
         });
 
 

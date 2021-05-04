@@ -7,15 +7,10 @@ public class NotEmptyString implements ConditionPolicy {
     public boolean isSatisfied(String input) {
 
         if (input == null) {
-            return false;
+            return true;
 
         }
 
-        if (input.length() == 0) {
-            return false;
-        }
-
-
-        return true;
+        return input.length() == 0;
     }
 }

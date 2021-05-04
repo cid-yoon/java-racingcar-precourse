@@ -1,7 +1,9 @@
 package racing.infra.validator;
 
 import racing.infra.validator.condition.ConditionPolicy;
-import racing.infra.validator.condition.impl.*;
+import racing.infra.validator.condition.impl.DigitNumberPolicy;
+import racing.infra.validator.condition.impl.NotEmptyString;
+import racing.infra.validator.condition.impl.NumberValuePolicy;
 
 public class NumberValidator {
     private static final ConditionPolicy[] conditionPolicies = new ConditionPolicy[]{
@@ -13,7 +15,7 @@ public class NumberValidator {
     public static boolean isSatisfied(String inputString) {
 
         for (ConditionPolicy policy : conditionPolicies) {
-            if (!policy.isSatisfied(inputString)) {
+            if (policy.isSatisfied(inputString)) {
                 return false;
             }
         }

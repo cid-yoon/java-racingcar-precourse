@@ -7,7 +7,7 @@ import racing.infra.validator.condition.impl.SeparationPolicy;
 
 public class NameValidator {
 
-    private static ConditionPolicy[] conditionPolicies = new ConditionPolicy[]{
+    private static final ConditionPolicy[] conditionPolicies = new ConditionPolicy[]{
             new NotEmptyString(),
             new SeparationPolicy(),
             new NameLengthPolicy(),
@@ -16,7 +16,7 @@ public class NameValidator {
     public static boolean isSatisfied(String inputString) {
 
         for (ConditionPolicy policy : conditionPolicies) {
-            if (!policy.isSatisfied(inputString)) {
+            if (policy.isSatisfied(inputString)) {
                 return false;
             }
         }

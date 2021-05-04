@@ -8,6 +8,7 @@ import org.junit.jupiter.params.provider.ValueSource;
 import static org.assertj.core.api.Assertions.assertThatIllegalArgumentException;
 import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
 
+@SuppressWarnings("ALL")
 class CylinderTest {
 
     @DisplayName("최소, 최대값 허용(0부터 9)으로 실린더 생성 확인")
@@ -22,13 +23,9 @@ class CylinderTest {
     @Test
     void 실린더_생성_허용되지않은_입력값으로_생성시_예외발생() {
 
-        assertThatIllegalArgumentException().isThrownBy(() -> {
-            new Cylinder(Cylinder.MIN_TORQUE - 1);
-        });
+        assertThatIllegalArgumentException().isThrownBy(() -> new Cylinder(Cylinder.MIN_TORQUE - 1));
 
-        assertThatIllegalArgumentException().isThrownBy(() -> {
-            new Cylinder(Cylinder.MAX_TORQUE + 1);
-        });
+        assertThatIllegalArgumentException().isThrownBy(() -> new Cylinder(Cylinder.MAX_TORQUE + 1));
     }
 
     @DisplayName("임계점 이하 수치를 입력 받는 경우 제자리 명령을 반환")
@@ -57,13 +54,9 @@ class CylinderTest {
 
         Cylinder cylinder = new Cylinder(5);
 
-        assertThatIllegalArgumentException().isThrownBy(() -> {
-            cylinder.run(Cylinder.MIN_TORQUE - 1);
-        });
+        assertThatIllegalArgumentException().isThrownBy(() -> cylinder.run(Cylinder.MIN_TORQUE - 1));
 
-        assertThatIllegalArgumentException().isThrownBy(() -> {
-            cylinder.run(Cylinder.MAX_TORQUE + 1);
-        });
+        assertThatIllegalArgumentException().isThrownBy(() -> cylinder.run(Cylinder.MAX_TORQUE + 1));
 
 
     }

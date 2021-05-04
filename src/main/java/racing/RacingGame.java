@@ -14,15 +14,11 @@ import java.util.List;
 
 public class RacingGame {
 
-    private final String NAME_INPUT_MESSAGE = "경주할 자동차 이름을 입력하세요(이름은 쉼표(,)기준으로 구분\n";
-    private final String GAS_INPUT_MESSAGE = "시도할 회수는 몇회인가요?\n";
     private final String INVALID_INPUT_MESSAGE = "잘못된 입력입니다. 다시 시도해 주세요\n";
 
-    private UiSystem uiSystem = new ConsoleUiSystem();
+    private final UiSystem uiSystem = new ConsoleUiSystem();
 
-    private Track track;
-
-    public void run(  ) {
+    public void run() {
 
         List<NumberPlate> numberPlates = createNumberPlate();
         int gasAmount = chargeGasAmount();
@@ -30,7 +26,7 @@ public class RacingGame {
         DisplayPanel displayPanel = new DisplayPanel(uiSystem);
 
         List<Car> cars = createCars(numberPlates, gasAmount);
-        track = new Track(cars, gasAmount);
+        Track track = new Track(cars, gasAmount);
         track.run(displayPanel);
     }
 
@@ -46,9 +42,10 @@ public class RacingGame {
 
     private List<NumberPlate> createNumberPlate() {
 
-        String carNames = "";
+        String carNames;
         while (true) {
 
+            String NAME_INPUT_MESSAGE = "경주할 자동차 이름을 입력하세요(이름은 쉼표(,)기준으로 구분\n";
             uiSystem.display(NAME_INPUT_MESSAGE);
             carNames = uiSystem.input();
             if (!NameValidator.isSatisfied(carNames)) {
@@ -67,8 +64,9 @@ public class RacingGame {
 
     private int chargeGasAmount() {
 
-        String chargeAmount = "";
+        String chargeAmount;
         while (true) {
+            String GAS_INPUT_MESSAGE = "시도할 회수는 몇회인가요?\n";
             uiSystem.display(GAS_INPUT_MESSAGE);
             chargeAmount = uiSystem.input();
 

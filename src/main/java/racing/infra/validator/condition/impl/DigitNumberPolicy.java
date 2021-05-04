@@ -9,6 +9,6 @@ public class DigitNumberPolicy implements ConditionPolicy {
 
     @Override
     public boolean isSatisfied(String inputString) {
-        return inputString.length() < DIGIT_NUMBER;
+        return inputString.length() >= DIGIT_NUMBER;
     }
 }

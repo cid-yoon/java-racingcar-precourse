@@ -6,6 +6,7 @@ import org.junit.jupiter.api.Test;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatIllegalArgumentException;
 
+@SuppressWarnings("ALL")
 class NameValidatorTest {
 
 
@@ -24,9 +25,7 @@ class NameValidatorTest {
 
         String names = ",iu,gogo";
 
-        assertThatIllegalArgumentException().isThrownBy(() -> {
-            NameValidator.check(names);
-        });
+        assertThatIllegalArgumentException().isThrownBy(() -> NameValidator.check(names));
     }
 
     @DisplayName("유효하지 않은 자릿수의 이름 길이")
@@ -34,9 +33,7 @@ class NameValidatorTest {
     void 이름검사기_유효하지_않은_이름_길이() {
 
         String names = "123456,abcdef";
-        assertThatIllegalArgumentException().isThrownBy(() -> {
-            NameValidator.check(names);
-        });
+        assertThatIllegalArgumentException().isThrownBy(() -> NameValidator.check(names));
     }
 
     @DisplayName("유효하지 않은 딜리미터가 사용된 경우-콤마")
@@ -44,9 +41,7 @@ class NameValidatorTest {
     void 이름검사기_유효하지_않은_딜리미터_사용() {
 
         String names = "1245:abcde";
-        assertThatIllegalArgumentException().isThrownBy(() -> {
-            NameValidator.check(names);
-        });
+        assertThatIllegalArgumentException().isThrownBy(() -> NameValidator.check(names));
     }
 
 }
