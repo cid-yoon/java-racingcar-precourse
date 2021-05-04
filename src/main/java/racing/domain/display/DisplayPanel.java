@@ -26,7 +26,7 @@ public class DisplayPanel {
 
     public int update(List<DriveRecord> records) {
 
-        if(records == null){
+        if (records == null) {
             throw new NullPointerException();
         }
 
@@ -36,10 +36,13 @@ public class DisplayPanel {
         return highestDistance;
     }
 
-    public void display(List<DriveRecord> records) {
+    public void draw(List<DriveRecord> records) {
         for (DriveRecord record : records) {
             record.display(uiSystem);
         }
+
+        // turn over
+        uiSystem.display("\n");
     }
 
     public void winnerDisplay() {
@@ -68,7 +71,7 @@ public class DisplayPanel {
             }
         }
 
-        return String.join(",", leaderNameList);
+        return String.join(", ", leaderNameList);
     }
 
 

@@ -25,7 +25,7 @@ public class DriveRecord {
 
     public void display(UiSystem uiSystem) {
         String driveLine = createDriveLine();
-        uiSystem.display(String.format("name : %s %s", this.name, driveLine));
+        uiSystem.display(String.format("name : %s\t%s", this.name, driveLine));
     }
 
     private String createDriveLine() {
