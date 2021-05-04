@@ -28,7 +28,7 @@ public class Cylinder {
      */
     public EngineState run(int torque) {
         torqueValidation(torque);
-        if (criticalPoint > torque) {
+        if (criticalPoint >= torque) {
             return EngineState.MOVE;
         }
 

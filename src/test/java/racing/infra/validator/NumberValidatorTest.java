@@ -12,7 +12,7 @@ class NumberValidatorTest {
 
     @DisplayName("유효한 숫자 입력 검증- 0 이상, 100 이하")
     @ParameterizedTest
-    @CsvSource(value = {"1","39","99"})
+    @CsvSource(value = {"1","5","9"})
     void 숫자검사기_유효한_숫자_검증(String inputNum) {
 
         assertThat(NumberValidator.isSatisfied(inputNum)).isTrue();

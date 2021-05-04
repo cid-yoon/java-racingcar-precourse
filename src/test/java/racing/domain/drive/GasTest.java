@@ -9,7 +9,6 @@ import org.junit.jupiter.params.provider.ValueSource;
 import static org.assertj.core.api.Assertions.assertThatIllegalArgumentException;
 import static org.assertj.core.api.Assertions.assertThatIllegalStateException;
 import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
-import static org.junit.jupiter.api.Assertions.*;
 
 class GasTest {
 
@@ -18,7 +17,7 @@ class GasTest {
     void 연료_충전_충전량을_입력받을수_있다() {
 
         // Given
-        int chargeAmount = 10;
+        int chargeAmount = 9;
 
         // When
         Gas gas = new Gas(chargeAmount);
@@ -39,7 +38,7 @@ class GasTest {
 
     @DisplayName("연료 소비시 남은 수량을 반환한다")
     @ParameterizedTest
-    @CsvSource(value = {"10:9", "2:1", "1:0"}, delimiter = ':')
+    @CsvSource(value = {"9:8", "2:1", "1:0"}, delimiter = ':')
     void 연료_소비_검증(Integer chargeAmount, Integer remainAmount) {
 
         // Given

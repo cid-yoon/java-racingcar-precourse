@@ -44,8 +44,6 @@ class DisplayPanelTest {
                 DriveRecord.create("cc", 12));
 
         displayPanel.update(records);
-
-        assertThat(displayPanel).isNotNull();
         assertThat(displayPanel.getLeaderNames()).contains("bb", "cc");
         assertThat(displayPanel.getHighestDistance()).isEqualTo(12);
     }

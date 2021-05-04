@@ -7,15 +7,10 @@ import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
 
 public class EngineTest {
 
-    private final static int DEFAULT_CRITICAL_POINT = 4;
-
     @DisplayName("엔진 개체를 생성")
     @Test
     void 엔진_생성() {
-
-        Gas newGas = new Gas(10);
-        Cylinder newCylinder = new Cylinder(DEFAULT_CRITICAL_POINT);
-        Engine engine = new Engine(newGas, newCylinder);
+        Engine engine = Engine.create(9);
         assertThat(engine).isNotNull();
     }
 
@@ -23,9 +18,7 @@ public class EngineTest {
     @Test
     void 엔진_동작_연료가_부족한_경우() {
 
-        Gas gas = new Gas(0);
-        Cylinder newCylinder = new Cylinder(DEFAULT_CRITICAL_POINT);
-        Engine engine = new Engine(gas, newCylinder);
+        Engine engine = Engine.create(0);
 
         EngineState state = engine.run();
         assertThat(state).isEqualTo(EngineState.NO_GAS);
@@ -36,9 +29,7 @@ public class EngineTest {
     @Test
     void 엔진_동작_연료가_충분한_경우() {
 
-        Gas gas = new Gas(5);
-        Cylinder newCylinder = new Cylinder(DEFAULT_CRITICAL_POINT);
-        Engine engine = new Engine(gas, newCylinder);
+        Engine engine = Engine.create(5);
 
         EngineState state = engine.run();
         assertThat(state).isNotEqualTo(EngineState.NO_GAS);
@@ -49,9 +40,8 @@ public class EngineTest {
     @Test
     void 엔진_동작_임계치_이하이면_제자리() {
 
-        Gas gas = new Gas(10);
         Cylinder newCylinder = new Cylinder(Cylinder.MIN_TORQUE);
-        Engine engine = new Engine(gas, newCylinder);
+        Engine engine = Engine.create(9, newCylinder);
 
         EngineState state = engine.run();
         assertThat(state).isEqualTo(EngineState.IDLE);
@@ -62,9 +52,9 @@ public class EngineTest {
     @Test
     void 엔진_동작_임계치_이싱이면_이동() {
 
-        Gas gas = new Gas(10);
+        Gas gas = new Gas(9);
         Cylinder newCylinder = new Cylinder(Cylinder.MAX_TORQUE);
-        Engine engine = new Engine(gas, newCylinder);
+        Engine engine = Engine.create(9, newCylinder);
 
         EngineState state = engine.run();
         assertThat(state).isEqualTo(EngineState.MOVE);
